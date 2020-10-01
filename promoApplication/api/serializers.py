@@ -20,6 +20,9 @@ class PromoSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
 
     def validate_promo_code(self, value):
+        """
+        check promo code exist before
+        """
         qs = Promo.objects.filter(promo_code__iexact=value)  # including instance
         if self.instance:
             qs = qs.exclude(pk=self.instance.pk)
@@ -28,7 +31,19 @@ class PromoSerializer(serializers.ModelSerializer):
         return value
 
     def validate_user(self, value):
+        """
+        check current login user is admin or normal user
+        """
         user = User.objects.get(username=value)
         if user.is_admin:
             raise serializers.validationError('promo code should be with normal users only, not admins')
         return value
+
+
+class PromoPointsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Promo
+        fields = [
+            'id',
+            'promo_amount',
+        ]

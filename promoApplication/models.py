@@ -20,8 +20,8 @@ class Promo(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User, null=True,  on_delete=models.CASCADE, limit_choices_to={'is_admin': False},)
 
-    def __str__(self):
-        return "{}".format(self.promo_code)
+    # def __str__(self):
+    #     return "{}".format(self.promo_code)
 
     class Meta:
         ordering = ('-created_at',)

@@ -30,6 +30,14 @@ class PromoSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This promo code already exist")
         return value
 
+    def validate_promo_amount(self, value):
+        """
+        check promo_amount grater than 0
+        """
+        if value <= 0:
+            raise serializers.ValidationError("promo amount should be greater than 0")
+        return value
+
     def validate_user(self, value):
         """
         check current login user is admin or normal user

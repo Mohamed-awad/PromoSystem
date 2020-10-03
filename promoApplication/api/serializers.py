@@ -47,3 +47,31 @@ class PromoPointsSerializer(serializers.ModelSerializer):
             'id',
             'promo_amount',
         ]
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'name',
+            'username',
+            'password',
+            'address',
+            'mobile_number'
+        ]
+        read_only_fields = ['id']
+
+    def validate_username(self, value):
+        """
+        check username exist before
+        """
+        qs = User.objects.filter(username__iexact=value)  # including instance
+        if qs.exists():
+            raise serializers.ValidationError("This username already exist")
+        return value
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user

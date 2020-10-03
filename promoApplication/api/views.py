@@ -4,8 +4,18 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from promoApplication.models import Promo, User
-from .serializers import PromoSerializer, PromoPointsSerializer
+from .serializers import PromoSerializer, PromoPointsSerializer, UserSerializer
 from .permissions import IsAdmin, IsOwner
+
+
+class UserCreateView(generics.CreateAPIView):
+    """
+    View to create User.
+    * Only normal users are able to access this view.
+    """
+    lookup_field = 'pk'
+    serializer_class = UserSerializer
+    permission_classes = []
 
 
 class PromoCreateView(generics.CreateAPIView):

@@ -43,3 +43,14 @@ this is a back-end promo system in which users are assigned various promos and c
         1.open (https://github.com/Mohamed-awad/PromoSystem/blob/master/promoApplication/api/tests.py)
     * if you want to run tests cases
         1.run this command ```python manage.py test```
+
+## Important Notes
+    * for create admins in the system
+        1. you should create super by run ```python manage.py createsuperuser```
+        2. login to /admin
+        3. create user in users that exist in PROMOAPPLICATION
+        4. when create user make is_admin checkbox checked
+        
+    * for use any end point in the system except (signup & login)
+        1. you need to send in headers Authurization token
+        2. you can get it from login end point /api/auth/login/

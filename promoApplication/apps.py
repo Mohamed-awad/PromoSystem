@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class PromoapplicationConfig(AppConfig):
+class PromoApplicationConfig(AppConfig):
     name = 'promoApplication'

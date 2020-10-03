@@ -212,7 +212,7 @@ class PromoAPITestCase(APITestCase):
             url = api_reverse('api-promo:get-update-delete-promo', kwargs={'pk': 1})
             self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token)  # JWT <token>
             response = self.client.delete(url, {}, format='json')
-            self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_delete_promo_with_user_login(self):
         data = {
@@ -227,4 +227,4 @@ class PromoAPITestCase(APITestCase):
             url = api_reverse('api-promo:get-update-delete-promo', kwargs={'pk': 1})
             self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token)  # JWT <token>
             response = self.client.delete(url, {}, format='json')
-            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

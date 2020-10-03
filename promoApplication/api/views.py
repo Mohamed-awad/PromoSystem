@@ -22,7 +22,7 @@ class PromoCreateView(generics.CreateAPIView):
         return {"request": self.request}
 
 
-class PromoUpdateView(generics.RetrieveUpdateDestroyAPIView):
+class PromoRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     """
     View to get, update, delete promo.
     * Requires token authentication.

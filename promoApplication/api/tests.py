@@ -228,3 +228,23 @@ class PromoAPITestCase(APITestCase):
             self.client.credentials(HTTP_AUTHORIZATION='JWT ' + token)  # JWT <token>
             response = self.client.delete(url, {}, format='json')
             self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_signup_for_normal_user(self):
+        data = {
+            'username': 'test_normal_user',
+            'password': 'test_normal_password'
+        }
+        url = api_reverse("api-signup")
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_signup_for_normal_user_with_username_exist(self):
+        data = {
+            'username': 'test_normal_user',
+            'password': 'test_normal_password'
+        }
+        url = api_reverse("api-signup")
+        response1 = self.client.post(url, data)
+        self.assertEqual(response1.status_code, status.HTTP_201_CREATED)
+        response2 = self.client.post(url, data)
+        self.assertEqual(response2.status_code, status.HTTP_400_BAD_REQUEST)

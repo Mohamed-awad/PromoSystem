@@ -55,14 +55,3 @@ this is a back-end promo system in which users are assigned various promos and c
         1. you need to send in headers Authurization token
         2. you can get it from login end point /api/auth/login/
  
-![step1](https://user-images.githubusercontent.com/24698814/131247658-5d1d6f92-b132-499c-a088-52e49150db87.png)
-
-
-![step2](https://user-images.githubusercontent.com/24698814/131247666-11d8119f-97ed-4c8c-8f7c-6077a9a1356b.png)
-
-
-![step3](https://user-images.githubusercontent.com/24698814/131247673-487eee7a-40ae-4a88-a23e-ea8c3c1950d2.png)
-
-
-![step4](https://user-images.githubusercontent.com/24698814/131247675-132633f1-7832-4423-a61b-6607e81c8f00.png)
- 
